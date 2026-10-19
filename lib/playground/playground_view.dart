@@ -129,24 +129,81 @@ class _ThemeTab extends StatelessWidget {
         PlaygroundSection(
           'Color scheme',
           children: [
+            const _CopyHint(),
             Wrap(
               spacing: 8,
               runSpacing: 8,
               children: [
-                _Swatch('primary', scheme.primary),
-                _Swatch('onPrimary', scheme.onPrimary),
-                _Swatch('primaryContainer', scheme.primaryContainer),
-                _Swatch('secondary', scheme.secondary),
-                _Swatch('secondaryContainer', scheme.secondaryContainer),
-                _Swatch('tertiary', scheme.tertiary),
-                _Swatch('error', scheme.error),
-                _Swatch('errorContainer', scheme.errorContainer),
-                _Swatch('surface', scheme.surface),
-                _Swatch('onSurface', scheme.onSurface),
-                _Swatch('onSurfaceVariant', scheme.onSurfaceVariant),
-                _Swatch('outline', scheme.outline),
-                _Swatch('outlineVariant', scheme.outlineVariant),
-                _Swatch('scaffold', Theme.of(context).scaffoldBackgroundColor),
+                _Swatch(
+                  'primary',
+                  scheme.primary,
+                  code: 'Theme.of(context).colorScheme.primary',
+                ),
+                _Swatch(
+                  'onPrimary',
+                  scheme.onPrimary,
+                  code: 'Theme.of(context).colorScheme.onPrimary',
+                ),
+                _Swatch(
+                  'primaryContainer',
+                  scheme.primaryContainer,
+                  code: 'Theme.of(context).colorScheme.primaryContainer',
+                ),
+                _Swatch(
+                  'secondary',
+                  scheme.secondary,
+                  code: 'Theme.of(context).colorScheme.secondary',
+                ),
+                _Swatch(
+                  'secondaryContainer',
+                  scheme.secondaryContainer,
+                  code: 'Theme.of(context).colorScheme.secondaryContainer',
+                ),
+                _Swatch(
+                  'tertiary',
+                  scheme.tertiary,
+                  code: 'Theme.of(context).colorScheme.tertiary',
+                ),
+                _Swatch(
+                  'error',
+                  scheme.error,
+                  code: 'Theme.of(context).colorScheme.error',
+                ),
+                _Swatch(
+                  'errorContainer',
+                  scheme.errorContainer,
+                  code: 'Theme.of(context).colorScheme.errorContainer',
+                ),
+                _Swatch(
+                  'surface',
+                  scheme.surface,
+                  code: 'Theme.of(context).colorScheme.surface',
+                ),
+                _Swatch(
+                  'onSurface',
+                  scheme.onSurface,
+                  code: 'Theme.of(context).colorScheme.onSurface',
+                ),
+                _Swatch(
+                  'onSurfaceVariant',
+                  scheme.onSurfaceVariant,
+                  code: 'Theme.of(context).colorScheme.onSurfaceVariant',
+                ),
+                _Swatch(
+                  'outline',
+                  scheme.outline,
+                  code: 'Theme.of(context).colorScheme.outline',
+                ),
+                _Swatch(
+                  'outlineVariant',
+                  scheme.outlineVariant,
+                  code: 'Theme.of(context).colorScheme.outlineVariant',
+                ),
+                _Swatch(
+                  'scaffold',
+                  Theme.of(context).scaffoldBackgroundColor,
+                  code: 'Theme.of(context).scaffoldBackgroundColor',
+                ),
               ],
             ),
           ],
@@ -175,28 +232,71 @@ class _TypographyTabState extends State<_TypographyTab> {
 
   String get _sample => _sampleController.text;
 
+  static final _weightSuffix = {
+    FontWeight.w400: '',
+    FontWeight.w500: '.medium',
+    FontWeight.w600: '.semiBold',
+    FontWeight.w700: '.bold',
+  };
+
   @override
   void dispose() {
     _sampleController.dispose();
     super.dispose();
   }
 
-  static final _styles = <(String, TextStyle, String)>[
-    ('Display L', AppTextStyles.displayL, '32 · Banana Grotesk · 120%'),
-    ('Display M', AppTextStyles.displayM, '28 · Banana Grotesk · 120%'),
-    ('Display S', AppTextStyles.displayS, '24 · Banana Grotesk · 120%'),
-    ('Display T', AppTextStyles.displayT, '22 · Banana Grotesk · 120%'),
-    ('Subtitle L', AppTextStyles.subtitleL, '20 · Banana Grotesk · 130%'),
-    ('Subtitle M', AppTextStyles.subtitleM, '18 · Manrope · 130%'),
-    ('Subtitle S', AppTextStyles.subtitleS, '16 · Manrope · 140%'),
-    ('Subtitle XS', AppTextStyles.subtitleXS, '15 · Manrope · 140%'),
-    ('Body L', AppTextStyles.bodyL, '14 · Manrope · 140%'),
-    ('Body M', AppTextStyles.bodyM, '13 · Manrope · 130%'),
-    ('Body S', AppTextStyles.bodyS, '12 · Manrope · 140%'),
-    ('Body T', AppTextStyles.bodyT, '11 · Manrope · 140%'),
-    ('CAPS', AppTextStyles.caps, '12 · Manrope · uppercase'),
-    ('CAPS T', AppTextStyles.capsT, '11 · Manrope · uppercase'),
+  static final _styles = <(String, String, TextStyle, String)>[
+    (
+      'Display L',
+      'displayL',
+      AppTextStyles.displayL,
+      '32 · Banana Grotesk · 120%',
+    ),
+    (
+      'Display M',
+      'displayM',
+      AppTextStyles.displayM,
+      '28 · Banana Grotesk · 120%',
+    ),
+    (
+      'Display S',
+      'displayS',
+      AppTextStyles.displayS,
+      '24 · Banana Grotesk · 120%',
+    ),
+    (
+      'Display T',
+      'displayT',
+      AppTextStyles.displayT,
+      '22 · Banana Grotesk · 120%',
+    ),
+    (
+      'Subtitle L',
+      'subtitleL',
+      AppTextStyles.subtitleL,
+      '20 · Banana Grotesk · 130%',
+    ),
+    ('Subtitle M', 'subtitleM', AppTextStyles.subtitleM, '18 · Manrope · 130%'),
+    ('Subtitle S', 'subtitleS', AppTextStyles.subtitleS, '16 · Manrope · 140%'),
+    (
+      'Subtitle XS',
+      'subtitleXS',
+      AppTextStyles.subtitleXS,
+      '15 · Manrope · 140%',
+    ),
+    ('Body L', 'bodyL', AppTextStyles.bodyL, '14 · Manrope · 140%'),
+    ('Body M', 'bodyM', AppTextStyles.bodyM, '13 · Manrope · 130%'),
+    ('Body S', 'bodyS', AppTextStyles.bodyS, '12 · Manrope · 140%'),
+    ('Body T', 'bodyT', AppTextStyles.bodyT, '11 · Manrope · 140%'),
+    ('CAPS', 'caps', AppTextStyles.caps, '12 · Manrope · uppercase'),
+    ('CAPS T', 'capsT', AppTextStyles.capsT, '11 · Manrope · uppercase'),
   ];
+
+  String _textCode(String key) {
+    final text = key.startsWith('caps') ? _sample.toUpperCase() : _sample;
+    final escaped = text.replaceAll('\\', '\\\\').replaceAll("'", r"\'");
+    return "Text('$escaped', style: AppTextStyles.$key${_weightSuffix[_weight]})";
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -231,22 +331,18 @@ class _TypographyTabState extends State<_TypographyTab> {
         PlaygroundSection(
           'Type scale',
           children: [
-            for (final (name, style, spec) in _styles)
-              Padding(
-                padding: const EdgeInsets.only(bottom: 16),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      '$name · $spec',
-                      style: AppTextStyles.bodyT.copyWith(color: muted),
-                    ),
-                    const SizedBox(height: 4),
-                    Text(
-                      name.startsWith('CAPS') ? _sample.toUpperCase() : _sample,
-                      style: style.copyWith(fontWeight: _weight),
-                    ),
-                  ],
+            Text(
+              'Copy gives a ready Text widget with the selected weight',
+              style: AppTextStyles.bodyS.copyWith(color: muted),
+            ),
+            const SizedBox(height: 8),
+            for (final (name, key, style, spec) in _styles)
+              CodeDemo(
+                title: '$name · $spec',
+                code: _textCode(key),
+                child: Text(
+                  key.startsWith('caps') ? _sample.toUpperCase() : _sample,
+                  style: style.copyWith(fontWeight: _weight),
                 ),
               ),
           ],
@@ -450,13 +546,13 @@ class _ColorsTab extends StatelessWidget {
             ('Green', AppColors.tagGreen),
             ('Grey', AppColors.tagGrey),
           ];
+    final palette = dark ? 'AppDarkColors' : 'AppColors';
     return PlaygroundPage(
       children: [
-        Text(
-          dark ? 'AppDarkColors' : 'AppColors',
-          style: AppTextStyles.subtitleM.bold,
-        ),
-        const SizedBox(height: 16),
+        Text(palette, style: AppTextStyles.subtitleM.bold),
+        const SizedBox(height: 4),
+        const _CopyHint(),
+        const SizedBox(height: 12),
         for (final (title, colors) in groups)
           PlaygroundSection(
             title,
@@ -465,7 +561,8 @@ class _ColorsTab extends StatelessWidget {
                 spacing: 8,
                 runSpacing: 8,
                 children: [
-                  for (final (name, color) in colors) _Swatch(name, color),
+                  for (final (name, color) in colors)
+                    _Swatch(name, color, code: '$palette.$name'),
                 ],
               ),
             ],
@@ -478,20 +575,24 @@ class _ColorsTab extends StatelessWidget {
               runSpacing: 8,
               children: [
                 for (final (name, tag) in tags)
-                  Container(
-                    padding: const EdgeInsets.symmetric(
-                      horizontal: 10,
-                      vertical: 4,
-                    ),
-                    decoration: BoxDecoration(
-                      color: tag.fill,
-                      border: Border.all(color: tag.stroke),
-                      borderRadius: BorderRadius.circular(6),
-                    ),
-                    child: Text(
-                      name.toUpperCase(),
-                      style: AppTextStyles.capsT.semiBold.copyWith(
-                        color: tag.text,
+                  _Copyable(
+                    code: '$palette.tag$name',
+                    hex: _hex(tag.fill),
+                    child: Container(
+                      padding: const EdgeInsets.symmetric(
+                        horizontal: 10,
+                        vertical: 4,
+                      ),
+                      decoration: BoxDecoration(
+                        color: tag.fill,
+                        border: Border.all(color: tag.stroke),
+                        borderRadius: BorderRadius.circular(6),
+                      ),
+                      child: Text(
+                        name.toUpperCase(),
+                        style: AppTextStyles.capsT.semiBold.copyWith(
+                          color: tag.text,
+                        ),
                       ),
                     ),
                   ),
@@ -504,40 +605,90 @@ class _ColorsTab extends StatelessWidget {
   }
 }
 
-class _Swatch extends StatelessWidget {
-  const _Swatch(this.name, this.color);
+String _hex(Color color) =>
+    '#${(color.toARGB32() & 0xFFFFFF).toRadixString(16).padLeft(6, '0').toUpperCase()}';
 
-  final String name;
-  final Color color;
+class _CopyHint extends StatelessWidget {
+  const _CopyHint();
 
   @override
   Widget build(BuildContext context) {
-    final hex =
-        '#${(color.toARGB32() & 0xFFFFFF).toRadixString(16).padLeft(6, '0').toUpperCase()}';
+    return Padding(
+      padding: const EdgeInsets.only(bottom: 8),
+      child: Text(
+        'Tap to copy the constant · long-press to copy the Color(0x…) value',
+        style: AppTextStyles.bodyS.copyWith(
+          color: Theme.of(context).colorScheme.onSurfaceVariant,
+        ),
+      ),
+    );
+  }
+}
+
+class _Copyable extends StatelessWidget {
+  const _Copyable({required this.code, required this.hex, required this.child});
+
+  final String code;
+  final String hex;
+  final Widget child;
+
+  @override
+  Widget build(BuildContext context) {
+    return Tooltip(
+      message: code,
+      child: InkWell(
+        borderRadius: BorderRadius.circular(8),
+        onTap: () => copyToClipboard(code, label: code),
+        onLongPress: () {
+          final value = 'const Color(0xFF${hex.substring(1)})';
+          copyToClipboard(value, label: value);
+        },
+        child: child,
+      ),
+    );
+  }
+}
+
+class _Swatch extends StatelessWidget {
+  const _Swatch(this.name, this.color, {required this.code});
+
+  final String name;
+  final Color color;
+  final String code;
+
+  @override
+  Widget build(BuildContext context) {
+    final hex = _hex(color);
     final onColor = color.computeLuminance() > 0.5
         ? Colors.black87
         : Colors.white;
-    return Container(
-      width: 104,
-      height: 72,
-      padding: const EdgeInsets.all(8),
-      decoration: BoxDecoration(
-        color: color,
-        borderRadius: BorderRadius.circular(8),
-        border: Border.all(color: Theme.of(context).colorScheme.outlineVariant),
-      ),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        mainAxisAlignment: MainAxisAlignment.end,
-        children: [
-          Text(
-            name,
-            maxLines: 1,
-            overflow: TextOverflow.ellipsis,
-            style: AppTextStyles.bodyT.semiBold.copyWith(color: onColor),
+    return _Copyable(
+      code: code,
+      hex: hex,
+      child: Container(
+        width: 104,
+        height: 72,
+        padding: const EdgeInsets.all(8),
+        decoration: BoxDecoration(
+          color: color,
+          borderRadius: BorderRadius.circular(8),
+          border: Border.all(
+            color: Theme.of(context).colorScheme.outlineVariant,
           ),
-          Text(hex, style: AppTextStyles.bodyT.copyWith(color: onColor)),
-        ],
+        ),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          mainAxisAlignment: MainAxisAlignment.end,
+          children: [
+            Text(
+              name,
+              maxLines: 1,
+              overflow: TextOverflow.ellipsis,
+              style: AppTextStyles.bodyT.semiBold.copyWith(color: onColor),
+            ),
+            Text(hex, style: AppTextStyles.bodyT.copyWith(color: onColor)),
+          ],
+        ),
       ),
     );
   }

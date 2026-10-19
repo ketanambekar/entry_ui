@@ -4,6 +4,12 @@ import 'package:flutter/services.dart';
 import 'package:entry_ui/theme/app_text_styles.dart';
 import 'package:entry_ui/widgets/app_toast.dart';
 
+/// Copies [text] to the clipboard and confirms with a toast.
+Future<void> copyToClipboard(String text, {String? label}) async {
+  await Clipboard.setData(ClipboardData(text: text.trim()));
+  AppToast.show(label == null ? 'Code copied to clipboard' : 'Copied $label');
+}
+
 class PlaygroundSection extends StatelessWidget {
   const PlaygroundSection(this.title, {super.key, required this.children});
 
@@ -56,11 +62,6 @@ class CodeDemo extends StatelessWidget {
   final Widget child;
   final String? title;
 
-  Future<void> _copy() async {
-    await Clipboard.setData(ClipboardData(text: code.trim()));
-    AppToast.show('Code copied to clipboard');
-  }
-
   @override
   Widget build(BuildContext context) {
     final scheme = Theme.of(context).colorScheme;
@@ -92,7 +93,7 @@ class CodeDemo extends StatelessWidget {
                   iconSize: 18,
                   color: scheme.primary,
                   icon: const Icon(Icons.copy_rounded),
-                  onPressed: _copy,
+                  onPressed: () => copyToClipboard(code),
                 ),
               ],
             ),

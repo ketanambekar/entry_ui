@@ -10,6 +10,8 @@
 include: package:flutter_lints/flutter.yaml
 
 analyzer:
+  exclude:
+    - bricks/**
   errors:
     # Strict rule: relative imports are not allowed; use package: imports.
     always_use_package_imports: error
