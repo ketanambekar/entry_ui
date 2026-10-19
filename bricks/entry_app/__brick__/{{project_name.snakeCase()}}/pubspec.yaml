@@ -1,0 +1,29 @@
+name: {{project_name.snakeCase()}}
+description: "{{{description}}}"
+publish_to: 'none'
+
+version: 1.0.0+1
+
+environment:
+  sdk: ^3.12.1
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  cupertino_icons: ^1.0.8
+  get: ^4.7.3
+  get_storage: ^2.1.1
+  entry_ui:
+    git:
+      url: {{{entry_ui_git_url}}}
+      ref: {{{entry_ui_ref}}}
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+  flutter_lints: ^6.0.0
+
+flutter:
+  uses-material-design: true

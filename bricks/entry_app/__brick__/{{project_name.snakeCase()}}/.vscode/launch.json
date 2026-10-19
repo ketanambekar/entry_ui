@@ -1,0 +1,28 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "{{project_name.snakeCase()}}",
+      "request": "launch",
+      "type": "dart",
+      "program": "lib/main.dart",
+      "preLaunchTask": "Bump version"
+    },
+    {
+      "name": "{{project_name.snakeCase()}} (profile)",
+      "request": "launch",
+      "type": "dart",
+      "program": "lib/main.dart",
+      "flutterMode": "profile",
+      "preLaunchTask": "Bump version"
+    },
+    {
+      "name": "{{project_name.snakeCase()}} (release)",
+      "request": "launch",
+      "type": "dart",
+      "program": "lib/main.dart",
+      "flutterMode": "release",
+      "preLaunchTask": "Bump version"
+    }
+  ]
+}

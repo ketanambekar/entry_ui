@@ -1,0 +1,30 @@
+name: entry_app
+description: Flutter app shell (GetX, routes, theme switching, version bumping) wired to entry_ui.
+version: 1.0.0
+environment:
+  mason: ^0.1.0
+vars:
+  project_name:
+    type: string
+    description: App name (snake_case package name is derived from it)
+    prompt: App name?
+  description:
+    type: string
+    description: pubspec description
+    default: A new Flutter app.
+    prompt: Description?
+  org:
+    type: string
+    description: Reverse-domain org used for Android/iOS bundle ids
+    default: com.example
+    prompt: Organization (bundle id prefix)?
+  entry_ui_git_url:
+    type: string
+    description: Git URL of the entry_ui repo
+    default: https://github.com/ketanambekar/entry_ui.git
+    prompt: entry_ui git URL?
+  entry_ui_ref:
+    type: string
+    description: Branch or tag of entry_ui to use
+    default: main
+    prompt: entry_ui branch/tag?
